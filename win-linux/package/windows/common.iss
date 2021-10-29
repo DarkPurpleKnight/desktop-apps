@@ -112,6 +112,7 @@ Name: es; MessagesFile: compiler:Languages\Spanish.isl;    LicenseFile: {#sBrand
 Name: pt_BR; MessagesFile: compiler:Languages\BrazilianPortuguese.isl; LicenseFile: {#sBrandingFolder}\common\package\license\{#LIC_FILE}.rtf;
 Name: it_IT; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: {#sBrandingFolder}\common\package\license\{#LIC_FILE}.rtf;
 Name: pl; MessagesFile: compiler:Languages\Polish.isl;     LicenseFile: {#sBrandingFolder}\common\package\license\{#LIC_FILE}.rtf;
+Name: zh_CN; MessagesFile: compiler:Languages\ChineseTraditional.isl;  LicenseFile: {#sBrandingFolder}\common\package\license\{#LIC_FILE}.rtf;
 
 
 [CustomMessages]
@@ -129,6 +130,7 @@ es.Launch =Ejecutar %1
 it_IT.Launch =Eseguire %1
 pt_BR.Launch =Lance o %1
 pl.Launch =Uruchom %1
+zh_CN.Launch =启动%1
 ;======================================================================================================
 en.CreateDesktopIcon =Create %1 &desktop icon
 cs_CZ.CreateDesktopIcon =Vytvořte %1 &ikonu pracovní plochy
@@ -140,6 +142,7 @@ es.CreateDesktopIcon =Crear %1 &icono en el escritorio
 it_IT.CreateDesktopIcon =Creare un collegamento %1 sul &desktop
 pt_BR.CreateDesktopIcon =Criar ícone de &desktop do %1
 pl.CreateDesktopIcon =Stwórz %1 oraz ikonę pulpitu
+zh_CN.CreateDesktopIcon =创建%1和桌面图标
 ;======================================================================================================
 en.InstallAdditionalComponents =Installing additional system components. Please wait...
 cs_CZ.InstallAdditionalComponents =Instalace dalších systémových komponent. Prosím, čekejte...
@@ -151,6 +154,7 @@ es.InstallAdditionalComponents =Instalando componentes adicionales del sistema. 
 it_IT.InstallAdditionalComponents =Installazione dei componenti addizionali del sistema. Per favore, attendi...
 pt_BR.InstallAdditionalComponents =Instalando componentes do sistema adicional. Aguarde...
 pl.InstallAdditionalComponents =Instalacja dodatkowych elementów systemu. Proszę czekać...
+zh_CN.InstallAdditionalComponents =安装其他系统组件。请稍候...
 ;======================================================================================================
 en.AdditionalTasks =Tasks:
 cs_CZ.AdditionalTasks =Úkoly:
@@ -162,6 +166,7 @@ es.AdditionalTasks =Tareas:
 it_IT.AdditionalTasks =Attività:
 pt_BR.AdditionalTasks =Tarefas:
 pl.AdditionalTasks =Zadania:
+zh_CN.AdditionalTasks =任务：
 ;======================================================================================================
 en.Uninstall =Uninstall
 cs_CZ.Uninstall =Odinstalovat
@@ -173,6 +178,7 @@ es.Uninstall =Desinstalar
 it_IT.Uninstall =Disinstalla
 pt_BR.Uninstall =Desinstalar
 pl.Uninstall =Odinstaluj
+zh_CN.Uninstall =卸载
 ;======================================================================================================
 en.WarningWrongArchitecture =You are trying to install the %1-bit application version over the %2-bit version installed. Please uninstall the previous version first or download the correct version for installation.
 cs_CZ.WarningWrongArchitecture =Pokoušíte se nainstalovat %1-bit verzi aplikace na nainstalovanou %2-bitovou verzi. Nejprve odinstalujte předchozí verzi nebo stáhněte správnou verzi pro instalaci.
@@ -184,6 +190,7 @@ es.WarningWrongArchitecture =Usted está tratando de instalar la versión de la 
 it_IT.WarningWrongArchitecture =Stai provando ad installare la versione dell'applicazione %1-bit sulla versione %2-bit installata. Si prega di disinstallare prima la versione precedente o scaricare la versione corretta per l'installazione.
 pt_BR.WarningWrongArchitecture =Você está tentando instalar a versão do aplicativo de %1 bits por cima da versão de %2 bits instalada. Desinstale primeiro a versão anterior ou baixe a versão correta para instalação.
 pl.WarningWrongArchitecture =Próbujesz zainstalować %1-bitową wersję aplikacji na %2-bitowej wersji zainstalowanej. Odinstaluj najpierw poprzednią wersję lub pobierz odpowiednią wersję dla instalacji.
+zh_CN.WarningWrongArchitecture =您正在尝试在已安装的%2-bit版本上安装%1-bit应用版本。请首先卸载之前版本，或下载正确的安装版本。
 ;======================================================================================================
 
 en.UpdateAppRunning=Setup has detected that %1 is currently running.%n%nIt'll be closed automatically. Click OK to continue, or Cancel to exit.
@@ -192,10 +199,11 @@ sk.UpdateAppRunning=Inštalátor zistil, že % 1 aktuálne prebieha.%n%nBude aut
 ru.UpdateAppRunning=Обнаружен запущенный экземпляр %1.%n%nДля обновления он будет автоматически закрыт. Нажмите «OK», чтобы продолжить, или «Отмена», чтобы выйти.
 de.UpdateAppRunning=Setup hat festgestellt, dass es aktuell %1 läuft. %n%nEs wird automatisch geschlossen. Klicken Sie zum Fortfahren auf OK oder auf Abbrechen zum Beenden des Programms.
 fr.UpdateAppRunning=L'installation a détecté que %1 est en cours d'exécution. %n%nIl sera fermé automatiquement. Cliquez sur OK pour continuer, ou Annuler pour quitter le programme.
-es.UpdateAppRunning=Programa de instalación ha detectado que actualmente %1 está funcionando.%n%nSe cerrará  automáticamente. Haga clic en OK para continuar o Cerrar para salir.
+es.UpdateAppRunning=Programa de instalación ha detectado que actualmente %1 está funcionando.%n%nSe cerrará  automáticamente. Haga clic en OK para continuar o Cerrar para salir.
 it_IT.UpdateAppRunning= Il programma di installazione ha rilevato che% 1 è attualmente in esecuzione.%n%nVerrà chiuso automaticamente. Fare clic su OK per continuare o su Annulla per uscire.
 pt_BR.UpdateAppRunning=A configuração detectou que %1 está atualmente em execução.%n%nEla será fechada automaticamente. Clique em OK para continuar ou em Cancelar para sair.
 pl.UpdateAppRunning=Konfiguracja wykryła , że %1 jest uruchomiona.%n%nZostanie ona automatycznie zamknięta. Kliknij OK, aby kontynuować lub Anuluj, aby wyjść.
+zh_CN.UpdateAppRunning=安装程序检测到%1当前正在运行。%n%n将自动关闭。单击“确定”继续，或“取消”退出。
 ;======================================================================================================
 en.WarningClearAppData =Do you want to clear the user settings and application cached data?
 cs_CZ.WarningClearAppData =Chcete zrušit uživatelské nastavení a údaje uložené v paměti?
@@ -207,6 +215,7 @@ es.WarningClearAppData =¿Desea eliminar los ajustes de usuario y datos en cach�
 it_IT.WarningClearAppData =Vuoi cancellare le impostazioni utente e i dati memorizzati nella cache dell’applicazione?
 pt_BR.WarningClearAppData =Você deseja limpar as definições de usuário e dados salvos do programa?
 pl.WarningClearAppData =Czy chcesz usunąć ustawienia użytkownika oraz dane pamięci podręcznej aplikacji?
+zh_CN.WarningClearAppData =您是否要清除用户设置和应用缓存数据？
 ;======================================================================================================
 
 
@@ -611,7 +620,6 @@ Name: {group}\{cm:Uninstall}; Filename: {uninstallexe}; WorkingDir: {app};
 
 
 [Run]
-Filename: "{cmd}"; Parameters: "/c msiexec.exe /x {{14361018-38E1-4A92-A787-78C1A1464AFD} AI_UNINSTALLER_CTP=1"; WorkingDir: {tmp};
 ;Filename: {app}\{#NAME_EXE_OUT}; Description: {cm:Launch,{#sAppName}}; Flags: postinstall nowait skipifsilent;
 Filename: {app}\{#iconsExe}; Description: {cm:Launch,{#sAppName}}; Flags: postinstall nowait skipifsilent;
 ;Filename: http://www.onlyoffice.com/remove-portal-feedback-form.aspx; Description: Visit website; Flags: postinstall shellexec nowait 
