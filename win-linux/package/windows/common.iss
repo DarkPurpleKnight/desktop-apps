@@ -250,17 +250,14 @@ var
   UninstallerParam: String;
   ResultCode: Integer;
   ConfirmUninstall: Integer;
-  ResultString: String;
   UpgradeCodeString: String;
   ProductCodeString: String;   
 begin
 
   Result := True;
   UninstallerParam := '/VERYSILENT';
-  //ProductCodeString:={14361018-38E1-4A92-A787-78C1A1464AFD}
   UninstallRegKey := '{reg:HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#sAppName} 6.4.1,UninstallString}';
   UninstallerPath := RemoveQuotes(ExpandConstant(UninstallRegKey));
-  //RegQueryStringValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#sAppName} 6.4.0', 'UninstallString', ResultString);
   if Length(UninstallerPath) > 0 then begin
   UpgradeCodeString:='{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF}'
     ConfirmUninstall := IDOK;
