@@ -258,8 +258,8 @@ begin
   UninstallerParam := '/VERYSILENT';
   UninstallRegKey := '{reg:HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF%7d,UninstallString}';
   UninstallerPath := RemoveQuotes(ExpandConstant(UninstallRegKey));
+  RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF}', 'UninstallString', ResultString);
   if Length(UninstallerPath) > 0 then begin
-  UpgradeCodeString:='{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF}'
     ConfirmUninstall := IDOK;
     if not WizardSilent() then begin
       UninstallerParam := '/SILENT';
@@ -269,7 +269,7 @@ begin
                               MB_OKCANCEL);
     end;
     if ConfirmUninstall = IDOK then begin
-    Exec('>', 'msiexec.exe /x "#UpgradeCodeString" AI_UNINSTALLER_CTP=1', '', SW_SHOW, ewWaitUntilTerminated, ResultCode)             
+    Exec('>', ResultString, '', SW_SHOW, ewWaitUntilTerminated, ResultCode)             
       while FileExists( UninstallerPath ) do begin
         Sleep(500);
       end
