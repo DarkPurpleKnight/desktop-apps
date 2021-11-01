@@ -256,7 +256,7 @@ begin
 
   Result := True;
   UninstallerParam := '/VERYSILENT';
-  UninstallRegKey := '{reg:HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#sAppName} 6.4.1,UninstallString}';
+  UninstallRegKey := '{reg:HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF%7d,UninstallString}';
   UninstallerPath := RemoveQuotes(ExpandConstant(UninstallRegKey));
   if Length(UninstallerPath) > 0 then begin
   UpgradeCodeString:='{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF}'
