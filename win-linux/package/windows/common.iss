@@ -249,9 +249,7 @@ var
   UninstallRegKey: String;
   UninstallerParam: String;
   ResultCode: Integer;
-  ConfirmUninstall: Integer;
-  UpgradeCodeString: String;
-  ProductCodeString: String;   
+  ConfirmUninstall: Integer;   
 begin
 
   Result := True;
