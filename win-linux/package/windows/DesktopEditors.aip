@@ -766,7 +766,7 @@
     <ROW Registry="Uninstall" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall" Name="+" Component_="Uninstall"/>
     <ROW Registry="UninstallPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallPath" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
     <ROW Registry="UninstallString" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallString" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
-    <ROW Registry="UninstallString_1" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[UpgradeCode]" Name="UninstallString" Value="msiexec.exe /x [\{]{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF}[\}] AI_UNINSTALLER_CTP=1" Component_="UninstallString"/>
+    <ROW Registry="UninstallString_1" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[UpgradeCode]" Name="UninstallString" Value="msiexec.exe /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="UninstallString"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
     <ROW Registry="VersionMajor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMajor" Value="#6" Component_="AI_CustomARPName" VirtualValue="#"/>
     <ROW Registry="VersionMinor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMinor" Value="#4" Component_="AI_CustomARPName" VirtualValue="#"/>
