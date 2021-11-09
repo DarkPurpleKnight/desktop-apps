@@ -269,7 +269,7 @@ begin
                               MB_OKCANCEL);
     end;
     for i := 1 to 32 do begin
-      arrayCode[i] := (Names[0])[i]
+      arrayCode[i] := (Names[0])[i];
     end;
     for i := 8 downto 1 do begin
       ProductCode := ProductCode+arrayCode[i];
