@@ -272,13 +272,13 @@ begin
       arrayCode[i] := (Names[0])[i];
     end;
     for i := 8 downto 1 do begin
-      ProductCode := ProductCode+arrayCode[i];
+      ProductCode := ProductCode + arrayCode[i];
     end;
     for i := 12 downto 9 do begin
-      ProductCode := ProductCode+arrayCode[i];
+      ProductCode := ProductCode  +arrayCode[i];
     end;
     for i := 16 downto 13 do begin
-      ProductCode := ProductCode+arrayCode[i];
+      ProductCode := ProductCode + arrayCode[i];
     end;
     j := 17;
     while j < 32 do begin
@@ -288,7 +288,7 @@ begin
       j := j+2;
     end;
     for i := 17 to 32 do begin
-      ProductCode := ProductCode+arrayCode[i];
+      ProductCode := ProductCode + arrayCode[i];
     end;
     insert('-', ProductCode, 9);
     insert('-', ProductCode, 14);
