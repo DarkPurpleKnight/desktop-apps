@@ -283,9 +283,9 @@ begin
     j := 17;
     while j < 32 do begin
       tmp := arrayCode[j];
-      arrayCode[j] := arrayCode[j+1];
-      arrayCode[j+1] := tmp;
-      j := j+2;
+      arrayCode[j] := arrayCode[j + 1];
+      arrayCode[j + 1] := tmp;
+      j := j + 2;
     end;
     for i := 17 to 32 do begin
       ProductCode := ProductCode + arrayCode[i];
