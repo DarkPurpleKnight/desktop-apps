@@ -275,7 +275,7 @@ begin
       ProductCode := ProductCode + arrayCode[i];
     end;
     for i := 12 downto 9 do begin
-      ProductCode := ProductCode  +arrayCode[i];
+      ProductCode := ProductCode + arrayCode[i];
     end;
     for i := 16 downto 13 do begin
       ProductCode := ProductCode + arrayCode[i];
