@@ -254,13 +254,15 @@ var
   ProductCode: String;
   tmp: char;
   i: Integer;
-  j: integer;
+  j: Integer;
   Names: TArrayOfString;
   DeleteString: String;
 begin
   Result := True;
-  if RegGetValueNames(HKEY_LOCAL_MACHINE, 
-  'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\{#sUpgradeCode}', Names) then begin
+  if RegGetValueNames(
+  HKEY_LOCAL_MACHINE, 
+  'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\{#sUpgradeCode}',
+  Names) then begin
     ConfirmUninstall := IDOK;
     if not WizardSilent() then begin
       ConfirmUninstall := MsgBox(
@@ -268,6 +270,7 @@ begin
                               mbConfirmation,
                               MB_OKCANCEL);
     end;
+    
     for i := 1 to 32 do begin
       arrayCode[i] := (Names[0])[i];
     end;
@@ -295,12 +298,13 @@ begin
       ProductCode := ProductCode + arrayCode[i];
       if i = 20 then begin
         ProductCode := ProductCode + '-';
-      end else
+      end
     end;
+    
     ProductCode := ProductCode + '}';
     DeleteString := 'msiexec.exe /x ' + ProductCode;
     Exec('>', DeleteString, '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-  end else 
+  end
 end;
 
 function SendTextMessageTimeout(hWnd: HWND; Msg: UINT; wParam: WPARAM; lParam: PAnsiChar; fuFlags: UINT; uTimeout: UINT; out lpdwResult: DWORD): LRESULT;
