@@ -35,6 +35,8 @@
   #include sBrandingFile
 #endif
 
+#define UpgradeCOde                 "607FEE744E0B34C449B45E9F419BB297"
+
 #include "utils.iss"
 #include "associate_page.iss"
 
@@ -245,49 +247,47 @@ procedure GetSystemTimeAsFileTime(var lpFileTime: TFileTime); external 'GetSyste
 
 function UninstallPreviosVersion(): Boolean;
 var
-  UninstallerParam: String;
   ResultCode: Integer;
   ConfirmUninstall: Integer;
   ResultString: String;
   arrayCode : array[1..32] of char;
   ProductCode: String;
-  tmp: char;
-  J: integer;
+  tmp : char;
+  i : Integer;
+  j : integer;
   Names: TArrayOfString;
-  I: Integer;
+  DeleteString : String;
 begin
-
   Result := True;
-  UninstallerParam := '/VERYSILENT';
-  if RegGetValueNames(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\607FEE744E0B34C449B45E9F419BB297', Names) then begin
+  if RegGetValueNames(HKEY_LOCAL_MACHINE, 
+  'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\{#UpgradeCode}', Names) then begin
     ConfirmUninstall := IDOK;
     if not WizardSilent() then begin
-      UninstallerParam := '/SILENT';
       ConfirmUninstall := MsgBox(
                               ExpandConstant('{cm:PrevVer}'),
                               mbConfirmation,
                               MB_OKCANCEL);
     end;
-    for I:=1 to 32 do begin
+    for i := 1 to 32 do begin
       arrayCode[i]:=(Names[0])[i]
     end;
-    for I:=8 downto 1 do begin
-    ProductCode := ProductCode+arrayCode[i];
+    for i := 8 downto 1 do begin
+      ProductCode := ProductCode+arrayCode[i];
     end;
-    for I:=12 downto 9 do begin
-       ProductCode := ProductCode+arrayCode[i];
+    for i := 12 downto 9 do begin
+      ProductCode := ProductCode+arrayCode[i];
     end;
-    for I:=16 downto 13 do begin
-       ProductCode := ProductCode+arrayCode[i];
+    for i := 16 downto 13 do begin
+      ProductCode := ProductCode+arrayCode[i];
     end;
-    J := 17;
-    while J < 32 do begin
+    j := 17;
+    while j < 32 do begin
       tmp := arrayCode[j];
       arrayCode[j] := arrayCode[j+1];
       arrayCode[j+1] := tmp;
       j := j+2;
     end;
-    for I:= 17 to 32 do begin
+    for i := 17 to 32 do begin
       ProductCode := ProductCode+arrayCode[i];
     end;
     insert('-', ProductCode, 9);
@@ -296,11 +296,9 @@ begin
     insert('-', ProductCode, 24);
     insert('{', ProductCode, 1);
     insert('}', ProductCode, 38);
-    ProductCode := 'msiexec.exe /x ' + ProductCode;
-    Exec('>', ProductCode, '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
-  end else
-  begin
-  end;
+    DeleteString := 'msiexec.exe /x ' + ProductCode;
+    Exec('>', DeleteString, '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+  end else 
 end;
 
 function SendTextMessageTimeout(hWnd: HWND; Msg: UINT; wParam: WPARAM; lParam: PAnsiChar; fuFlags: UINT; uTimeout: UINT; out lpdwResult: DWORD): LRESULT;
