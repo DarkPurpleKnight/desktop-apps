@@ -35,7 +35,7 @@
   #include sBrandingFile
 #endif
 
-#define UpgradeCOde                 "607FEE744E0B34C449B45E9F419BB297"
+#define sUpgradeCode                 "607FEE744E0B34C449B45E9F419BB297"
 
 #include "utils.iss"
 #include "associate_page.iss"
@@ -260,7 +260,7 @@ var
 begin
   Result := True;
   if RegGetValueNames(HKEY_LOCAL_MACHINE, 
-  'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\{#UpgradeCode}', Names) then begin
+  'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\{#sUpgradeCode}', Names) then begin
     ConfirmUninstall := IDOK;
     if not WizardSilent() then begin
       ConfirmUninstall := MsgBox(
@@ -271,17 +271,21 @@ begin
     for i := 1 to 32 do begin
       arrayCode[i] := (Names[0])[i];
     end;
+    ProductCode := '{';
     for i := 8 downto 1 do begin
       ProductCode := ProductCode + arrayCode[i];
     end;
+    ProductCode := ProductCode + '-';
     for i := 12 downto 9 do begin
       ProductCode := ProductCode + arrayCode[i];
     end;
+    ProductCode := ProductCode + '-';
     for i := 16 downto 13 do begin
       ProductCode := ProductCode + arrayCode[i];
     end;
+    ProductCode := ProductCode + '-';
     j := 17;
-    while j < 32 do begin
+    while j < 32 do begin     
       tmp := arrayCode[j];
       arrayCode[j] := arrayCode[j + 1];
       arrayCode[j + 1] := tmp;
@@ -289,13 +293,11 @@ begin
     end;
     for i := 17 to 32 do begin
       ProductCode := ProductCode + arrayCode[i];
+      if i = 20 then begin
+        ProductCode := ProductCode + '-';
+      end else
     end;
-    insert('-', ProductCode, 9);
-    insert('-', ProductCode, 14);
-    insert('-', ProductCode, 19);
-    insert('-', ProductCode, 24);
-    insert('{', ProductCode, 1);
-    insert('}', ProductCode, 38);
+    ProductCode := ProductCode + '}';
     DeleteString := 'msiexec.exe /x ' + ProductCode;
     Exec('>', DeleteString, '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
   end else 
