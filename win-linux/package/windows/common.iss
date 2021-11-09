@@ -245,19 +245,21 @@ procedure GetSystemTimeAsFileTime(var lpFileTime: TFileTime); external 'GetSyste
 
 function UninstallPreviosVersion(): Boolean;
 var
-  UninstallerPath: String;
-  UninstallRegKey: String;
   UninstallerParam: String;
   ResultCode: Integer;
-  ConfirmUninstall: Integer;   
+  ConfirmUninstall: Integer;
+  ResultString: String;
+  arrayCode : array[1..32] of char;
+  ProductCode: String;
+  tmp: char;
+  J: integer;
+  Names: TArrayOfString;
+  I: Integer;
 begin
 
   Result := True;
   UninstallerParam := '/VERYSILENT';
-  UninstallRegKey := '{reg:HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF%7d,UninstallString}';
-  UninstallerPath := RemoveQuotes(ExpandConstant(UninstallRegKey));
-  RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CB49AF5D-4326-45BE-BB4E-E0422BFA64CF}', 'UninstallString', ResultString);
-  if Length(UninstallerPath) > 0 then begin
+  if RegGetValueNames(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\607FEE744E0B34C449B45E9F419BB297', Names) then begin
     ConfirmUninstall := IDOK;
     if not WizardSilent() then begin
       UninstallerParam := '/SILENT';
@@ -266,14 +268,38 @@ begin
                               mbConfirmation,
                               MB_OKCANCEL);
     end;
-    if ConfirmUninstall = IDOK then begin
-    Exec('>', ResultString, '', SW_SHOW, ewWaitUntilTerminated, ResultCode)             
-      while FileExists( UninstallerPath ) do begin
-        Sleep(500);
-      end
-    end else begin
-      Result := False;
+    for I:=1 to 32 do begin
+      arrayCode[i]:=(Names[0])[i]
     end;
+    for I:=8 downto 1 do begin
+    ProductCode := ProductCode+arrayCode[i];
+    end;
+    for I:=12 downto 9 do begin
+       ProductCode := ProductCode+arrayCode[i];
+    end;
+    for I:=16 downto 13 do begin
+       ProductCode := ProductCode+arrayCode[i];
+    end;
+    J := 17;
+    while J < 32 do begin
+      tmp := arrayCode[j];
+      arrayCode[j] := arrayCode[j+1];
+      arrayCode[j+1] := tmp;
+      j := j+2;
+    end;
+    for I:= 17 to 32 do begin
+      ProductCode := ProductCode+arrayCode[i];
+    end;
+    insert('-', ProductCode, 9);
+    insert('-', ProductCode, 14);
+    insert('-', ProductCode, 19);
+    insert('-', ProductCode, 24);
+    insert('{', ProductCode, 1);
+    insert('}', ProductCode, 38);
+    ProductCode := 'msiexec.exe /x ' + ProductCode;
+    Exec('>', ProductCode, '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
+  end else
+  begin
   end;
 end;
 
