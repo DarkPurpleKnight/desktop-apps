@@ -250,13 +250,13 @@ var
   ResultCode: Integer;
   ConfirmUninstall: Integer;
   ResultString: String;
-  arrayCode : array[1..32] of char;
+  arrayCode: array[1..32] of char;
   ProductCode: String;
-  tmp : char;
-  i : Integer;
-  j : integer;
+  tmp: char;
+  i: Integer;
+  j: integer;
   Names: TArrayOfString;
-  DeleteString : String;
+  DeleteString: String;
 begin
   Result := True;
   if RegGetValueNames(HKEY_LOCAL_MACHINE, 
